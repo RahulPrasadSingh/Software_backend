@@ -8,7 +8,12 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Enable CORS for all routes
-app.use(cors()); // This allows cross-origin requests from your frontend
+app.use(cors({
+  origin: 'https://software-frontend-woad.vercel.app', // your frontend's Vercel URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true // only if you use cookies or auth headers
+}));
+ // This allows cross-origin requests from your frontend
 
 // Middleware
 app.use(express.json()); // To parse JSON bodies in POST requests
